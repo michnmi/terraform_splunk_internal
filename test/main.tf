@@ -36,7 +36,7 @@ resource "libvirt_volume" "splunk" {
 resource "libvirt_domain" "splunk" {
   provider  = libvirt.vmhost02
   name      = "splunk_${var.env}"
-  memory    = "1024"
+  memory    = "1536"
   vcpu      = 2
   autostart = true
 
