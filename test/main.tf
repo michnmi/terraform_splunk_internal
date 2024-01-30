@@ -3,20 +3,20 @@ terraform {
   required_providers {
     libvirt = {
       source  = "dmacvicar/libvirt"
-      version = "0.6.2"
+      version = ">=0.6.2"
     }
   }
 }
 
 provider "libvirt" {
   alias = "vmhost01"
-  // uri   = "qemu+ssh://splunk_automation@vmhost01/system?keyfile=../id_ed25519_splunk"
+  // uri   = "qemu+ssh://jenkins_automation@vmhost01/system?keyfile=../id_ed25519_jenkins"
   uri   = "qemu+ssh://vmhost01/system"
 }
 
 provider "libvirt" {
   alias = "vmhost02"
-  // uri   = "qemu+ssh://splunk_automation@vmhost02/system?keyfile=../id_ed25519_splunk"
+  // uri   = "qemu+ssh://jenkins_automation@vmhost02/system?keyfile=../id_ed25519_jenkins"
   uri   = "qemu+ssh://vmhost02/system"
 }
 
