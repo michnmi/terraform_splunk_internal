@@ -33,6 +33,15 @@ resource "libvirt_volume" "splunk" {
   base_volume_pool = var.env
 }
 
+resource "libvirt_volume" "splunk_extra" {
+  provider         = libvirt.vmhost03
+  name             = "splunk-${var.env}-extra.qcow2"
+  pool             = var.env
+  base_volume_name = "splunk-data-disk.qcow2"
+  format           = "qcow2"
+  base_volume_pool = var.env
+}
+
 resource "libvirt_domain" "splunk" {
   provider  = libvirt.vmhost03
   name      = "splunk-${var.env}"
@@ -54,6 +63,10 @@ resource "libvirt_domain" "splunk" {
 
   disk {
     volume_id = libvirt_volume.splunk.id
+  }
+
+  disk {
+    volume_id = libvirt_volume.splunk_extra.id
   }
 
   console {
